@@ -20,11 +20,21 @@
                                 @endif
                             </div>
                         </div>
-                        @if (isset($item->count))
-                            <div class="panel-footer">
-                                <p class="text-center">{{ $key+1 }}位： {{ $item->count}} Wants</p>
-                            </div>
-                        @endif
+                        <?php
+                        $url = $_SERVER['REQUEST_URI'];
+                        ?>
+                            @if (isset($item->count) && strstr($url, 'want')==true)
+                                <div class="panel-footer">
+                                    <p class="text-center">{{ $key+1 }}位： {{ $item->count }} Wants</p>
+                                </div>
+                            @endif
+                     
+                            @if (isset($item->count) && strstr($url, 'have')==true)
+                                <div class="panel-footer">
+                                    <p class="text-center">{{ $key+1 }}位： {{ $item->count }} Has</p>
+                                </div>
+                            @endif
+                        
                     </div>
                 </div>
             </div>
